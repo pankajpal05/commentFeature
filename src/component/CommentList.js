@@ -1,25 +1,13 @@
 import React, { useState } from "react";
 import "../styles/commentList.css";
-import useAddComment from "../hooks/useAddComment";
 
-const CommentList = ({
-  comments,
-  handlereplyComment,
-  handleeditComment,
-  handledeleteComment,
-}) => {
+const CommentList = ({ comments, handlereplyComment, handledeleteComment }) => {
   const [replyText, setReplyText] = useState("");
-  const [isVisible, setIsVisible] = useState([]);
-  const [commentIndex, setCommentIndex] = useState([]);
   const [editMode, setEdiMode] = useState(false);
   const [showInput, setShowInput] = useState(false);
 
-  const addReplyComment = (id) => {
+  const addReplyComment = () => {
     setShowInput(true);
-  };
-
-  const deleteComment = (id, index) => {
-    console.log(id, index, "delete---");
   };
 
   return (
@@ -70,24 +58,25 @@ const CommentList = ({
                     Reply
                   </button>
 
-                  <button className="edit" onClick={() => setEdiMode(true)}>
-                    Edit
+                  <button
+                    className="delete"
+                    onClick={() => handledeleteComment(comments)}
+                  >
+                    Delete
                   </button>
-
-                  <button className="delete">Delete</button>
                 </>
               ) : null}
             </div>
           </div>
         )}
 
-        {comments.childNodes.map((comment) => {
+        {comments.childNodes.map((comment, index) => {
           return (
             <CommentList
               comments={comment}
               handledeleteComment={handledeleteComment}
               handlereplyComment={handlereplyComment}
-              handleeditComment={handleeditComment}
+              key={index}
             />
           );
         })}
