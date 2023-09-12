@@ -1,0 +1,16 @@
+.btn {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  overflow: hidden;
+}

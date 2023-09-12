@@ -1,0 +1,57 @@
+.mainwrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.commentArea {
+  background-color: lightgray;
+  padding: 20px 20px;
+}
+
+.inputShow {
+  margin: 20px;
+  padding: 10px;
+}
+
+.commentAction {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reply {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+.edit {
+  margin: 0px 20px;
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+  border: none;
+}
+
+button {
+  border: none;
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.replyInput {
+  margin: 20px;
+}
+
+.childReply {
+  margin: 25px;
+}
