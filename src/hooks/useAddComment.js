@@ -29,17 +29,30 @@ const useAddComment = () => {
 
     const comments = allComments.childNodes;
     findNestedCommentIndex(comments, comment);
-    console.log(allComments, "allcomments----");
-    // const index = allComments.childNodes.indexOf(comment);
-    // allComments.childNodes[index].childNodes = updateChild;
     return allComments;
   };
 
-  const deleteComment = () => {};
+  // Delete function of particular node
+  const deleteComment = (comment, allComments) => {
+    const findNestedCommentIndex = (comments, comment) => {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i] === comment) {
+          return comments.splice(i, 1);
+        }
+        if (comments[i].childNodes) {
+          findNestedCommentIndex(comments[i].childNodes, comment);
+        }
+      }
 
-  const editComment = () => {};
+      return -1;
+    };
+    const comments = allComments.childNodes;
+    findNestedCommentIndex(comments, comment);
 
-  return { replyComment, editComment, deleteComment };
+    return allComments;
+  };
+
+  return { replyComment, deleteComment };
 };
 
 export default useAddComment;

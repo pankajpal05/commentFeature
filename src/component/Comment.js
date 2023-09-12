@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommentList from "./CommentList";
 import "./Comment.css";
 import useAddComment from "../hooks/useAddComment";
@@ -14,12 +14,12 @@ const arr = {
     {
       id: 8761,
       commentText: "third",
-      childNodes: [{ id: 12, commentText: "secojnnd", childNodes: [] }],
+      childNodes: [{ id: 12, commentText: "nine", childNodes: [] }],
     },
     {
       id: 23561,
       commentText: "fourth",
-      childNodes: [{ id: 23, commentText: "second", childNodes: [] }],
+      childNodes: [{ id: 23, commentText: "eightteen", childNodes: [] }],
     },
     {
       id: 1987,
@@ -27,7 +27,7 @@ const arr = {
       childNodes: [
         {
           id: 34,
-          commentText: "secoeend",
+          commentText: "this is extra",
           childNodes: [{ id: 32232, commentText: "err", childNodes: [] }],
         },
       ],
@@ -35,7 +35,7 @@ const arr = {
     {
       id: 1321,
       commentText: "vxcv",
-      childNodes: [{ id: 902, commentText: "seqewqecond", childNodes: [] }],
+      childNodes: [{ id: 902, commentText: "random act", childNodes: [] }],
     },
   ],
 };
@@ -44,7 +44,7 @@ const Comment = () => {
   const [commentText, setCommentText] = useState("");
   const [allComments, setAllComments] = useState(arr);
 
-  const { replyComment, editComment, deleteComment } = useAddComment();
+  const { replyComment, deleteComment } = useAddComment();
 
   const addComment = () => {
     const comment = {
@@ -64,9 +64,10 @@ const Comment = () => {
     setAllComments(finalResult);
   };
 
-  const handleeditComment = () => {};
-
-  const handledeleteComment = () => {};
+  const handledeleteComment = (comment) => {
+    const finalStructure = deleteComment(comment, allComments);
+    setAllComments(finalStructure);
+  };
 
   return (
     <div>
@@ -84,7 +85,6 @@ const Comment = () => {
       <CommentList
         comments={allComments}
         handlereplyComment={handlereplyComment}
-        handleeditComment={handleeditComment}
         handledeleteComment={handledeleteComment}
       />
     </div>
